@@ -23,7 +23,7 @@ function HeaderMenu({ mini, setMini }) {
 
   return (
     <StyledHeaderMenu>
-      {width < 480 && (
+      {width <= 480 && (
         <li onClick={() => setMini((cur) => !cur)}>
           <ButtonIcon className={mini ? "rotate" : ""}>
             <MdTableRows className="tabIcon" />

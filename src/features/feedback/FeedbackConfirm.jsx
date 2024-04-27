@@ -4,6 +4,7 @@ import Textarea from "../../ui/Textarea";
 import Button from "../../ui/Button";
 import StarRating from "../../ui/StarRating";
 import styled from "styled-components";
+import toast from "react-hot-toast";
 
 const StyledConfirm = styled.div`
   width: 40rem;
@@ -31,16 +32,22 @@ const StyledConfirm = styled.div`
   & textarea {
     height: 211px;
   }
+  @media (max-width: 480px) {
+    width: 20rem;
+  }
 `;
 export default function FeedbackConfirm({
   resourceName,
   onCloseModal,
   disabled,
+  onConfirm,
 }) {
   const [userRating, setUserRating] = useState("");
 
   const handleConfirm = () => {
+    onConfirm?.();
     onCloseModal();
+    toast.success("your voting was sent successfully");
   };
   return (
     <StyledConfirm>

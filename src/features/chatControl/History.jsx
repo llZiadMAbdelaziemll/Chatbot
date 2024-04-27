@@ -5,6 +5,7 @@ import Confirmation from "../../ui/Confirmation";
 import Modal from "../../ui/Modal";
 import styled from "styled-components";
 import { Context } from "../../context/Context";
+import toast from "react-hot-toast";
 
 const StyledHistory = styled.div`
   padding: 1rem;
@@ -97,11 +98,13 @@ export default function History({ extended }) {
   const handleDeleteAll = () => {
     deleteAllChats();
     newChat();
+    toast.success("all chats was deleted successfully");
   };
   const handleDelete = (e, id) => {
     e.stopPropagation();
     deleteChat(id);
     newChat();
+    toast.success("this chat was deleted successfully");
   };
   return (
     <StyledHistory>

@@ -11,12 +11,17 @@ import styled from "styled-components";
 import { Context } from "../../context/Context";
 import MainContent from "./MainContent";
 import StopRunning from "./StopRunning";
+import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 const StyledBody = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 
+  & .input {
+    width: 100%;
+  }
   & .mic {
     font-size: 4rem;
     color: black;
@@ -29,14 +34,6 @@ const Span = styled.span`
   padding: 0.5rem 0;
 `;
 export default function Body() {
-  // const {
-  //   transcript,
-  //   listening,
-  //   resetTranscript,
-  //   browserSupportsSpeechRecognition,
-  // } = useSpeechRecognition();
-
-  // const [isListening, setIsListening] = useState(false);
   const {
     onSent,
     recentPrompt,
@@ -49,36 +46,18 @@ export default function Body() {
     timeoutIds,
     newChat,
   } = useContext(Context);
+  const responseDone = resultData === "";
 
-  // useEffect(() => {
-  //   if (listening) {
-  //     setIsListening(true);
-  //   } else {
-  //     setIsListening(false);
-  //   }
-  // }, [listening]);
-
-  // useEffect(() => {
-  //   if (transcript) {
-  //     setInput(transcript);
-  //   }
-  // }, [transcript]);
-
-  // const toggleListening = () => {
-  //   if (!isListening) {
-  //     resetTranscript(); // Reset transcript when starting listening
-  //   }
-  //   setIsListening((prevListening) => !prevListening);
-  //   console.log(transcript);
-  // };
-  const allResponsesDisplayed = resultData === "";
   function handleSubmit(e) {
     e.preventDefault();
     if (input !== "") onSent();
   }
-  // function handleMic() {
-  //   resetTranscript();
-  // }
+  function handleReset() {
+    if (recentPrompt !== "") {
+      newChat();
+      toast.success("a chat was restarted successfully");
+    }
+  }
 
   return (
     <StyledBody>
@@ -91,47 +70,47 @@ export default function Body() {
             resultData={resultData}
             loading={loading}
           />
-          {timeoutIds.length !== 0 && !allResponsesDisplayed && (
+          {timeoutIds.length !== 0 && !responseDone && (
             <StopRunning stopTypingAnimation={stopTypingAnimation} />
           )}
         </>
       )}
-      {/* {loading ? (
-            <div className="loader">
-              <hr />
-              <hr />
-              <hr />
-            </div>
-          ) : (
-            <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
-          )} */}
-      {/* <MdMic
-        className="mic"
-        onClick={() => {
-          handleMic();
-          console.log(resetTranscript);
-        }}
-      /> */}
-      {/*<button className="mic" onClick={toggleListening}>
-        {isListening ? "Stop Listening" : "Start Listening"}
-    </button>*/}
-      <Form type="normal" onSubmit={handleSubmit}>
-        <Button type="reset" onClick={() => newChat()}>
-          <Span>
-            <MdOutlineCleaningServices />
-          </Span>
-        </Button>
-        <Input
-          onChange={(e) => setInput(e.target.value)}
-          value={input}
-          placeholder="Ask any question here..."
-        />
 
-        <Button>
-          <Span>
-            <MdSend />
-          </Span>
-        </Button>
+      <Form type="normal" onSubmit={handleSubmit}>
+        <motion.span
+          initial={{ x: -100 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Button type="reset" onClick={handleReset}>
+            <Span>
+              <MdOutlineCleaningServices />
+            </Span>
+          </Button>
+        </motion.span>
+        <motion.div
+          className="input"
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Input
+            onChange={(e) => setInput(e.target.value)}
+            value={input}
+            placeholder="Ask any question here..."
+          />
+        </motion.div>
+        <motion.span
+          initial={{ x: 100 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Button>
+            <Span>
+              <MdSend />
+            </Span>
+          </Button>
+        </motion.span>
       </Form>
     </StyledBody>
   );

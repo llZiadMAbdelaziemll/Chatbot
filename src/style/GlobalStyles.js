@@ -250,9 +250,11 @@ background-color: #f6f7f8;
 background: linear-gradient(to right,rgba(58, 237, 177, 0.2),rgba(59, 237, 178, 0.6),rgba(58, 237, 177, 0.2));
 background-size: 800px 50px;
 height: 20px;
-  max-width: 45rem;
-/* width: 45rem; */
+ width: 45rem; 
 animation: loader 4s infinite linear;
+@media (max-width: 480px) {
+    width: 33rem;
+  }
 }
 @keyframes fadeIn{
   0%{

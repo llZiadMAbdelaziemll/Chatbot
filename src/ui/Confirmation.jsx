@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "./Button";
 import Heading from "./Heading";
+import toast from "react-hot-toast";
 
 const StyledConfirmDelete = styled.div`
   width: 40rem;
@@ -21,6 +22,9 @@ const StyledConfirmDelete = styled.div`
     justify-content: flex-end;
     gap: 1.2rem;
   }
+  @media (max-width: 480px) {
+    width: 20rem;
+  }
 `;
 
 function Confirmation({
@@ -34,7 +38,9 @@ function Confirmation({
   const handleConfirm = () => {
     onConfirm();
     onCloseModal();
+    toast.success("A new chat was created successfully");
   };
+
   return (
     <StyledConfirmDelete>
       <Heading as="h3">
@@ -49,7 +55,10 @@ function Confirmation({
         <Button
           variation="secondary"
           disabled={disabled}
-          onClick={onCloseModal}
+          onClick={() => {
+            onCloseModal();
+            toast.error("your action was canceled");
+          }}
         >
           Cancel
         </Button>

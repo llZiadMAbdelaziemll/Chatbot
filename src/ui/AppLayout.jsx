@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import Input from "./Input";
 import styled, { css } from "styled-components";
 import Body from "../features/body/Body";
 import SideBar from "../features/chatControl/SideBar";
 import { useScreenWidth } from "../hooks/useScreenWidth";
+import Loader from "./Loader";
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -32,20 +32,34 @@ export default function AppLayout() {
   const [extended, setExtended] = useState(false);
   const [mini, setMini] = useState(false);
   const width = useScreenWidth();
-  return (
-    <StyledAppLayout extended={extended}>
-      <Header mini={mini} setMini={setMini} />
-      {/* width > 480 ?  */}
-      <SideBar
-        type={width < 480 ? "mini" : "large"}
-        extended={extended}
-        setExtended={setExtended}
-        mini={mini}
-      />
+  let [loading, setLoading] = useState(false);
 
-      <Main>
-        <Body />
-      </Main>
-    </StyledAppLayout>
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+  }, []);
+  return (
+    <>
+      {loading ? (
+        <Loader loading={loading} />
+      ) : (
+        <StyledAppLayout extended={extended}>
+          <Header mini={mini} setMini={setMini} />
+          {/* width > 480 ?  */}
+          <SideBar
+            type={width <= 480 ? "mini" : "large"}
+            extended={extended}
+            setExtended={setExtended}
+            mini={mini}
+          />
+
+          <Main>
+            <Body />
+          </Main>
+        </StyledAppLayout>
+      )}
+    </>
   );
 }

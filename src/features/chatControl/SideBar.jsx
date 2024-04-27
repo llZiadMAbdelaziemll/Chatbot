@@ -13,8 +13,7 @@ import History from "./History";
 import Heading from "../../ui/Heading";
 import { Context } from "../../context/Context";
 import Feedback from "../feedback/Feedback";
-import FeedbackConfirm from "../feedback/FeedbackConfirm";
-import Modal from "../../ui/Modal";
+import { motion } from "framer-motion";
 
 const StyledSidebar = styled.aside`
   /* background-color: #0b1523; */
@@ -49,6 +48,10 @@ const StyledSidebar = styled.aside`
 
       height: 100vh;
     `}
+    & .motion-style {
+    height: 100%;
+    margin-bottom: 2rem;
+  }
 `;
 const StyledLogo = styled.div`
   display: flex;
@@ -69,7 +72,7 @@ const StyledHelpers = styled.div`
   justify-content: end;
   align-items: center;
   justify-self: flex-end;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   height: 100%;
   gap: 0.4rem;
 `;
@@ -90,6 +93,19 @@ export const StyledNewChat = styled.div`
     background-color: rgba(59, 237, 178, 0.15);
   }
 `;
+const variants = {
+  initial: { x: -100, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+};
+
+const containerVariants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
 export default function SideBar({ extended, setExtended, type, mini }) {
   const { newChat } = useContext(Context);
 
@@ -106,17 +122,38 @@ export default function SideBar({ extended, setExtended, type, mini }) {
           <MdTableRows className="tabIcon" />
         </ButtonIcon>
       </StyledLogo>
-      <NewChat extended={extended} />
+      <motion.div
+        initial={{ x: -150 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <NewChat extended={extended} />
+      </motion.div>
       <History extended={extended} />
-      <StyledHelpers>
-        <Feedback extended={extended} />
-        <StyledNewChat>
-          <MdRefresh /> {!extended && <Heading as="h4">New Chat</Heading>}
-        </StyledNewChat>
-        <StyledNewChat>
-          <MdSettings /> {!extended && <Heading as="h4">New Chat</Heading>}
-        </StyledNewChat>
-      </StyledHelpers>
+      <motion.div
+        initial="initial"
+        animate="animate"
+        variants={containerVariants}
+        className="motion-style"
+      >
+        <StyledHelpers>
+          <motion.div variants={variants}>
+            <Feedback extended={extended} />
+          </motion.div>
+
+          <motion.div variants={variants}>
+            <StyledNewChat>
+              <MdRefresh /> {!extended && <Heading as="h4">New Chat</Heading>}
+            </StyledNewChat>
+          </motion.div>
+          <motion.div variants={variants}>
+            <StyledNewChat>
+              <MdSettings /> {!extended && <Heading as="h4">New Chat</Heading>}
+            </StyledNewChat>
+          </motion.div>
+        </StyledHelpers>
+      </motion.div>
+
       {/* <MainNav /> */}
     </StyledSidebar>
   );
