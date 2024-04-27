@@ -143,12 +143,12 @@ export default function SideBar({ extended, setExtended, type, mini }) {
 
           <motion.div variants={variants}>
             <StyledNewChat>
-              <MdRefresh /> {!extended && <Heading as="h4">New Chat</Heading>}
+              <MdRefresh /> {!extended && <Heading as="h4">Activity</Heading>}
             </StyledNewChat>
           </motion.div>
           <motion.div variants={variants}>
             <StyledNewChat>
-              <MdSettings /> {!extended && <Heading as="h4">New Chat</Heading>}
+              <MdSettings /> {!extended && <Heading as="h4">Sittings</Heading>}
             </StyledNewChat>
           </motion.div>
         </StyledHelpers>
