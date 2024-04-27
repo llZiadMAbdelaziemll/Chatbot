@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../../ui/Button";
 import { MdStop } from "react-icons/md";
+import Button from "../../ui/Button";
 
 const StyledStop = styled.div`
   position: fixed;
-
   bottom: 11rem;
   left: 55%;
   padding: 0;
-  /* background-color: rgb(59, 237, 178); */
   border-radius: 10px;
   margin: auto;
   color: black;

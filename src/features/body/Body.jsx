@@ -1,18 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useSpeechRecognition } from "react-speech-recognition";
+import React, { useContext } from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { MdSend, MdOutlineCleaningServices } from "react-icons/md";
+import toast from "react-hot-toast";
+import { Context } from "../../context/Context";
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
 import Button from "../../ui/Button";
 import DefaultContent from "./DefaultContent";
-import { MdMic, MdSend } from "react-icons/md";
-import { MdPauseCircleOutline } from "react-icons/md";
-import { MdOutlineCleaningServices } from "react-icons/md";
-import styled from "styled-components";
-import { Context } from "../../context/Context";
 import MainContent from "./MainContent";
 import StopRunning from "./StopRunning";
-import toast from "react-hot-toast";
-import { motion } from "framer-motion";
+
 const StyledBody = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,6 +31,7 @@ const Span = styled.span`
   display: block;
   padding: 0.5rem 0;
 `;
+
 export default function Body() {
   const {
     onSent,
@@ -46,6 +45,7 @@ export default function Body() {
     timeoutIds,
     newChat,
   } = useContext(Context);
+
   const responseDone = resultData === "";
 
   function handleSubmit(e) {
@@ -65,11 +65,7 @@ export default function Body() {
         <DefaultContent />
       ) : (
         <>
-          <MainContent
-            recentPrompt={recentPrompt}
-            resultData={resultData}
-            loading={loading}
-          />
+          <MainContent />
           {timeoutIds.length !== 0 && !responseDone && (
             <StopRunning stopTypingAnimation={stopTypingAnimation} />
           )}

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Heading from "../../ui/Heading";
 import { motion } from "framer-motion";
+import Heading from "../../ui/Heading";
 
 const StyledDefault = styled.div`
   display: flex;
@@ -26,8 +26,8 @@ export default function DefaultContent() {
       <Img src="no-chat.svg" alt="no-chat" />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0 }} // Initial animation properties
-        animate={{ opacity: 1, scale: 1 }} // Animation properties when component mounts
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
         <Heading as="h2">Ask anything to chatbot</Heading>

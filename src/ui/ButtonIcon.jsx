@@ -14,7 +14,6 @@ const ButtonIcon = styled.button`
   & svg {
     width: 3rem;
     height: 3rem;
-    /* color: white; */
     color: var(--color-opposite);
   }
   &:focus {

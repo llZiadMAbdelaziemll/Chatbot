@@ -21,23 +21,10 @@ const sizes = {
 };
 
 const variations = {
-  // primary: css`
-  //   color: #0a101a;
-  //   background-color: rgb(59, 237, 178) !important;
-  // `,
   primary: css`
     color: var(--color-secondary);
     background-color: var(--color-main) !important;
   `,
-  // secondary: css`
-  //   color: rgb(59, 237, 178);
-  //   background-color: rgba(59, 237, 178, 0.15);
-  //   /* border: 1px solid var(--color-grey-200); */
-
-  //   &:hover {
-  //     background-color: rgba(59, 237, 178, 0.1);
-  //   }
-  // `,
 
   secondary: css`
     color: var(--color-main);

@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import Header from "./Header";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
+import useLoading from "../hooks/useLoading";
+import { useScreenWidth } from "../hooks/useScreenWidth";
 import Body from "../features/body/Body";
 import SideBar from "../features/chatControl/SideBar";
-import { useScreenWidth } from "../hooks/useScreenWidth";
 import Loader from "./Loader";
+import Header from "./Header";
 
 const StyledAppLayout = styled.div`
   display: grid;
   grid-template-columns: 26rem 1fr;
-  /* position: relative; */
   ${(props) =>
     props.extended &&
     css`
@@ -32,14 +32,8 @@ export default function AppLayout() {
   const [extended, setExtended] = useState(false);
   const [mini, setMini] = useState(false);
   const width = useScreenWidth();
-  let [loading, setLoading] = useState(false);
+  const loading = useLoading();
 
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 4000);
-  }, []);
   return (
     <>
       {loading ? (
@@ -47,7 +41,6 @@ export default function AppLayout() {
       ) : (
         <StyledAppLayout extended={extended}>
           <Header mini={mini} setMini={setMini} />
-          {/* width > 480 ?  */}
           <SideBar
             type={width <= 480 ? "mini" : "large"}
             extended={extended}

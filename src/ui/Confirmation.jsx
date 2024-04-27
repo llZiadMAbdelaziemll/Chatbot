@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import toast from "react-hot-toast";
 import Button from "./Button";
 import Heading from "./Heading";
-import toast from "react-hot-toast";
 
 const StyledConfirmDelete = styled.div`
   width: 40rem;
@@ -66,7 +66,6 @@ function Confirmation({
           variation={isCreation ? "primary" : "danger"}
           disabled={disabled}
           onClick={isCreation ? handleConfirm : onConfirm}
-          // onClick={onConfirm}
         >
           {isCreation ? "create" : "delete"}
         </Button>

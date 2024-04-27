@@ -1,31 +1,21 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
+import { MdTableRows, MdSettings, MdRefresh } from "react-icons/md";
+import { motion } from "framer-motion";
 import Logo from "./Logo";
-import { MdStarBorder, MdTableRows } from "react-icons/md";
-import { MdImage } from "react-icons/md";
-import { MdMicNone } from "react-icons/md";
-import { MdHelpOutline } from "react-icons/md";
-import { MdSettings } from "react-icons/md";
-import { MdRefresh } from "react-icons/md";
 import ButtonIcon from "../../ui/ButtonIcon";
 import NewChat from "./NewChat";
 import History from "./History";
 import Heading from "../../ui/Heading";
-import { Context } from "../../context/Context";
 import Feedback from "../feedback/Feedback";
-import { motion } from "framer-motion";
 
 const StyledSidebar = styled.aside`
-  /* background-color: #0b1523; */
   background-color: var(--color-third-2);
-
   padding: 0 2.4rem;
   border-right: 1px solid var(--color-border);
-
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   gap: 3.2rem;
   overflow: hidden;
 
@@ -49,6 +39,7 @@ const StyledSidebar = styled.aside`
       height: 100vh;
     `}
     & .motion-style {
+    margin: auto;
     height: 100%;
     margin-bottom: 2rem;
   }
@@ -59,7 +50,6 @@ const StyledLogo = styled.div`
   justify-content: space-between;
   padding: 2.2rem 0 1.2rem;
   color: white;
-  /* color: var(--color-main-bg); */
   border-bottom: 1px solid var(--color-border);
   & button.rotate {
     transform: rotate(90deg);
@@ -70,9 +60,7 @@ const StyledHelpers = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: end;
-  align-items: center;
-  justify-self: flex-end;
-  /* margin-bottom: 2rem; */
+  align-items: start;
   height: 100%;
   gap: 0.4rem;
 `;
@@ -84,7 +72,6 @@ export const StyledNewChat = styled.div`
   color: white;
   cursor: pointer;
   padding: 1rem;
-  /* color: rgb(245, 245, 245, 0.8); */
   color: var(--color-content-text);
   & svg {
     font-size: 2rem;
@@ -93,6 +80,7 @@ export const StyledNewChat = styled.div`
     background-color: rgba(59, 237, 178, 0.15);
   }
 `;
+
 const variants = {
   initial: { x: -100, opacity: 0 },
   animate: { x: 0, opacity: 1 },
@@ -106,9 +94,8 @@ const containerVariants = {
     },
   },
 };
-export default function SideBar({ extended, setExtended, type, mini }) {
-  const { newChat } = useContext(Context);
 
+export default function SideBar({ extended, setExtended, type, mini }) {
   return (
     <StyledSidebar type={type} mini={mini} extended={extended}>
       <StyledLogo>

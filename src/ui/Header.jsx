@@ -1,16 +1,13 @@
 import styled from "styled-components";
-import Heading from "./Heading";
-import HeaderMenu from "./HeaderMenu";
 import { motion } from "framer-motion";
 import { useDarkMode } from "../context/DarkModeContext";
+import HeaderMenu from "./HeaderMenu";
+import Heading from "./Heading";
 
 const StyledHeader = styled.header`
   padding: 2.1rem 4.8rem;
   border-bottom: 1px solid var(--color-border);
-
-  /* background-color: #0a101a; */
   background-color: var(--color-main-bg);
-  /* color: rgb(59, 237, 178); */
   color: var(--color-main);
   display: flex;
   align-items: center;
@@ -27,6 +24,7 @@ const StyledRight = styled.div`
   align-items: center;
   gap: 1rem;
 `;
+
 const Img = styled.img`
   width: 40px;
   border-radius: 50px;
@@ -43,7 +41,6 @@ function Header({ mini, setMini }) {
         transition={{ duration: 0.5 }}
       >
         <img src={src} />
-        {/* <Heading as="h2">Ask anything</Heading> */}
       </motion.div>
       <motion.div
         initial={{ x: 80 }}

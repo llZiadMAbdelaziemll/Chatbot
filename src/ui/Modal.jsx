@@ -9,9 +9,7 @@ const StyledModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* background-color: #26292c; */
   background-color: var(--color-main-bg);
-
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
   padding: 3.2rem 4rem;
@@ -24,7 +22,6 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  /* background-color: var(--backdrop-color); */
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(0px);
   z-index: 1000;
@@ -33,7 +30,6 @@ const Overlay = styled.div`
 
 const Button = styled.button`
   background: none;
-  /* border: none; */
   border: 1px solid rgba(59, 237, 178, 0.2);
   padding: 0.4rem;
   border-radius: var(--border-radius-sm);
@@ -44,26 +40,20 @@ const Button = styled.button`
   right: 1.9rem;
 
   &:hover {
-    /* background-color: rgb(59, 237, 178); */
     background-color: var(--color-main);
   }
 
   & svg {
     width: 2.4rem;
     height: 2.4rem;
-
-    /* color: var(--color-grey-500); */
-    /* color: rgb(59, 237, 178); */
     color: var(--color-main);
   }
   &:hover svg {
-    /* color: #0a101a; */
     color: var(--color-main-bg);
   }
 `;
 
 const ModalContext = createContext();
-
 function Modal({ children }) {
   const [openName, setOpenName] = useState("");
 

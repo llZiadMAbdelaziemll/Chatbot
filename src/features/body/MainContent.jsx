@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { Context } from "../../context/Context";
 
 const StyledContent = styled.div`
   padding: 0 30px 120px;
@@ -41,13 +42,13 @@ const QuestionContent = styled.div`
   border-radius: 6px 6px 0 6px;
 `;
 const AnswerContent = styled.div`
-  /* color: rgba(245, 245, 245, 0.6); */
   color: var(--color-content-text);
-
   background-color: var(--color-content-bg);
   border-radius: 6px;
 `;
-export default function MainContent({ recentPrompt, resultData, loading }) {
+export default function MainContent() {
+  const { recentPrompt, loading, resultData } = useContext(Context);
+
   return (
     <StyledContent>
       <Question>
@@ -68,11 +69,6 @@ export default function MainContent({ recentPrompt, resultData, loading }) {
           </AnswerContent>
         </Answer>
       )}
-      {/* <Answer>
-        <AnswerContent>
-          <Content dangerouslySetInnerHTML={{ __html: resultData }}></Content>
-        </AnswerContent>
-      </Answer> */}
     </StyledContent>
   );
 }

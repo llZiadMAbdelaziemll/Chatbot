@@ -1,17 +1,15 @@
 import React, { useContext } from "react";
 import { MdChat, MdDelete } from "react-icons/md";
+import styled from "styled-components";
+import toast from "react-hot-toast";
+import { Context } from "../../context/Context";
 import Heading from "../../ui/Heading";
 import Confirmation from "../../ui/Confirmation";
 import Modal from "../../ui/Modal";
-import styled from "styled-components";
-import { Context } from "../../context/Context";
-import toast from "react-hot-toast";
 
 const StyledHistory = styled.div`
   padding: 1rem;
-  /* color: rgb(59, 237, 178); */
   color: var(--color-main);
-
   animation: fadeIn 2s;
 `;
 const Title = styled.div`
@@ -31,7 +29,6 @@ const Title = styled.div`
 const List = styled.ul`
   list-style: none;
   display: inline-block;
-  /* color: rgb(245, 245, 245, 0.8); */
   color: var(--color-content-text);
   display: flex;
   flex-direction: column;
@@ -73,14 +70,15 @@ const Li = styled.li`
     background-color: rgba(59, 237, 178, 0.15);
   }
 `;
+
 const Time = styled.span`
   font-size: 1.1rem;
   text-align: right;
   margin-right: 1.8rem;
   margin-top: -15px;
-  /* color: rgb(59, 237, 178, 0.65); */
   color: var(--color-mini);
 `;
+
 export default function History({ extended }) {
   const {
     onSent,
@@ -106,13 +104,13 @@ export default function History({ extended }) {
     newChat();
     toast.success("this chat was deleted successfully");
   };
+
   return (
     <StyledHistory>
       {!extended && (
         <>
           <Title>
             <Heading as="h3">Recent Chats</Heading>
-            {/* {prevPrompts.length > 1 && <MdDelete onClick={handleDeleteAll} />} */}
             {prevPrompts.length > 1 && (
               <span>
                 <Modal>
@@ -146,14 +144,10 @@ export default function History({ extended }) {
                     <MdChat /> {cur.prompt.slice(0, 7)}
                     {cur.prompt.length <= 6 ? "" : " ..."}
                     <span>
-                      {/* <MdDelete onConfirm={(e) => {
-                              handleDelete(e, cur.id);
-                            }}/> */}
                       <Modal>
                         <Modal.Open opens="delete">
                           <MdDelete className="delete" />
                         </Modal.Open>
-
                         <Modal.Window name="delete">
                           <Confirmation
                             process="delete"

@@ -14,9 +14,7 @@ const GlobalStyles = createGlobalStyle`
   --color-mini:rgba(59, 237, 178, 0.65);
 
   --color-border: rgb(245, 245, 245, 0.15);
-  /* --color-grey-200: #e9e9e9;
-  --color-grey-300: #d4d6d8; */
-  /* Grey */
+  
   --color-grey-0: #fff;
   --color-grey-100: #eceef0;
   --color-grey-200: #e9e9e9;
@@ -27,28 +25,6 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-700: #000;
 
 
-  --color-green-0: #fff;
-  --color-green-50: #f0f8f5;
-  --color-green-100: #e4f2ed;
-  --color-green-200: #a2d2c0;
-  --color-green-300: #83c3ab;
-  --color-green-400: #64b496;
-  --color-green-500: #5aa287;
-  --color-green-600: #509078;
-  --color-green-700: #467e69;
-  --color-green-800: #325a4b;
-  --color-green-900: #1e362d;
-
-  --color-blue-100: #e0f2fe;
-  --color-blue-700: #0369a1;
-  --color-green-100: #dcfce7;
-  --color-green-700: #15803d;
-  --color-yellow-100: #fef9c3;
-  --color-yellow-700: #a16207;
-  --color-silver-100: #e5e7eb;
-  --color-silver-700: #374151;
-  --color-indigo-100: #e0e7ff;
-  --color-indigo-700: #4338ca;
 
   --color-red-100: #fee2e2;
   --color-red-700: #b91c1c;
@@ -74,7 +50,6 @@ const GlobalStyles = createGlobalStyle`
   --color-secondary-2:rgb(59, 237, 178,0.5);
   --color-third-2 : #f5f5f5;
 
-  /* --color-content-bg: rgba(156, 157, 159, 0.45); */
   --color-content-bg: rgba(156, 157, 159, 0.19);
   --color-content-text:  #185f47;
   --color-opposite:#0c2f24;
@@ -90,29 +65,7 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-100: #1c2236;
   --color-grey-0: #151a2b;
 
-  --color-green-0: #fff;
-  --color-green-50: #f0f8f5;
-  --color-green-100: #e4f2ed;
-  --color-green-200: #a2d2c0;
-  --color-green-300: #83c3ab;
-  --color-green-400: #64b496;
-  --color-green-500: #5aa287;
-  --color-green-600: #509078;
-  --color-green-700: #467e69;
-  --color-green-800: #325a4b;
-  --color-green-900: #1e362d;
-
-
---color-blue-100: #075985;
---color-blue-700: #e0f2fe;
---color-green-100: #166534;
---color-green-700: #dcfce7;
---color-yellow-100: #854d0e;
---color-yellow-700: #fef9c3;
---color-silver-100: #374151;
---color-silver-700: #f3f4f6;
---color-indigo-100: #3730a3;
---color-indigo-700: #e0e7ff;
+ 
 
 --color-red-100: #fee2e2;
 --color-red-700: #b91c1c;
@@ -130,28 +83,13 @@ const GlobalStyles = createGlobalStyle`
   
   --color-content:rgba(245, 245, 245, 0.7);
 
-  /* Indigo */
-  --color-brand-50: #eef2ff;
-  --color-brand-100: #e0e7ff;
-  --color-brand-200: #c7d2fe;
-  --color-brand-500: #6366f1;
-  --color-brand-600: #4f46e5;
-  --color-brand-700: #4338ca;
-  --color-brand-800: #3730a3;
-  --color-brand-900: #312e81;
-  
-  /* Application */
-  --color-primary:  #252525;
-
-
+ 
   /*************** */
   --border-radius-tiny: 3px;
   --border-radius-sm: 5px;
   --border-radius-md: 7px;
   --border-radius-lg: 9px;
 
-  /* Font family */
-  --manrope-font: "Manrope", sans-serif;
 
 }
 
