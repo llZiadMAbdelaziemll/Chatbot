@@ -53,7 +53,7 @@ export default function Body() {
     if (input !== "") onSent();
   }
   function handleReset() {
-    if (recentPrompt !== "") {
+    if (showResult) {
       newChat();
       toast.success("a chat was restarted successfully");
     }
