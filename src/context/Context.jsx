@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import runChat from "../services/apiChatbot";
+import toast from "react-hot-toast";
 
 export const Context = createContext();
 
@@ -55,25 +56,28 @@ const ContextProvider = (props) => {
       setRecentPrompt(input);
       response = await runChat(input);
     }
-
-    let responseArray = response.split("**");
-    let newResponse = "";
-    for (let i = 0; i < responseArray.length; i++) {
-      if (i === 0 || 1 % 2 !== 1) {
-        newResponse += responseArray[i];
-      } else {
-        newResponse += "<b>" + responseArray[i] + "</b>";
+    try {
+      let responseArray = response.split("**");
+      let newResponse = "";
+      for (let i = 0; i < responseArray.length; i++) {
+        if (i === 0 || 1 % 2 !== 1) {
+          newResponse += responseArray[i];
+        } else {
+          newResponse += "<b>" + responseArray[i] + "</b>";
+        }
       }
+      let newResponse2 = newResponse.split("*").join("<br/>");
+      let newResponseArray = newResponse2.split(" ");
+      for (let i = 0; i < newResponseArray.length; i++) {
+        const nextWord = newResponseArray[i];
+        delayPara(i, nextWord + " ");
+      }
+    } catch (error) {
+      toast.error("Error while running chat:", error);
+    } finally {
+      setLoading(false);
+      setInput("");
     }
-    let newResponse2 = newResponse.split("*").join("<br/>");
-    let newResponseArray = newResponse2.split(" ");
-    for (let i = 0; i < newResponseArray.length; i++) {
-      const nextWord = newResponseArray[i];
-      delayPara(i, nextWord + " ");
-    }
-
-    setLoading(false);
-    setInput("");
   };
   const contextValue = {
     prevPrompts,
